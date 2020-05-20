@@ -131,6 +131,13 @@ sudo systemctl restart networking.service
 ## IP Tables
 
 Now we will set up all the `iptables` rules we need.
+There are a lot of good resources that discuss `iptables` out there, and you should get the general idea before going through this section.
+
+See Also:
+- https://wiki.archlinux.org/index.php/Iptables
+- https://www.youtube.com/watch?v=vbhr4csDeI4
+- https://www.crybit.com/what-is-iptables-in-linux/
+- https://www.youtube.com/watch?v=ldB8kDEtTZA
 
 ### Rules
 
@@ -179,7 +186,7 @@ We will forward any packets either part of an existing connection or coming from
 
 #### NAT
 
-The Network Address Translation (NAT) table is responsible to changing IP addresses on incoming and outgoing packets.
+The Network Address Translation (NAT) table is responsible for changing IP addresses on incoming and outgoing packets.
 This is the real "routing" part of a router.
 In addition to the `INPUT` and `OUTPUT` chains we previously discussed, the NAT table also has two more chains:
 - `PREROUTING` - For all packets before they have been routed.
@@ -194,12 +201,15 @@ We will default to accepting packets on all chains (dropping will be done at the
 ```
 
 The only real thing we do in the NAT table is enable NAT.
-This rule will send all packets coming from the LAN and destined for the WAN to the special `MASQUERADE` chain.
+This rule will send all packets coming from the LAN and destined for the WAN to the special `MASQUERADE` target.
 The `MASQUERADE` target will make it look like the network is a single machine to the WAN
 while incoming packets can still be routed to the proper machines.
 ```
 -A POSTROUTING -s 192.168.10.0/24 -o eth0 -j MASQUERADE
 ```
+
+See Also:
+- http://www.billauer.co.il/ipmasq-html.html
 
 ### Load Rules on Boot
 
@@ -307,6 +317,8 @@ After you see everything is working, make sure to enable `cloudflared` on startu
 ```sh
 sudo systemctl enable cloudflared
 ```
+If your installation method did not install a service,
+this repository provides a sample Systemd unit called `cloudflared.service`.
 
 See Also:
 - https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/
