@@ -1,0 +1,4 @@
+# WAN should use DHCP from upstream.
+
+auto eth0
+iface eth0 inet dhcp

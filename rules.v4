@@ -1,0 +1,44 @@
+# The filter table.
+*filter
+# Be strict, except for outgoing.
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# Loopback is always fine.
+-A INPUT -i lo -j ACCEPT
+
+# Allow ssh into this machine.
+# -A INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
+
+# Allow all packets coming from the LAN.
+-A INPUT -i lan -j ACCEPT
+
+# Allow established connections from the WAN.
+-A INPUT -i eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Allow new connections and connections established from the LAN.
+-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i lan -j ACCEPT
+
+# Port forwards.
+# 22 (ssh)
+# -A FORWARD -i eth0 -p tcp -d 192.168.10.172 --dport 22 -j ACCEPT
+
+COMMIT
+
+# The nat table.
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# General NAT
+-A POSTROUTING -s 192.168.10.0/24 -o eth0 -j MASQUERADE
+
+# Port forwards.
+# 22 (ssh)
+# -A PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to 192.168.10.172:22
+
+COMMIT
