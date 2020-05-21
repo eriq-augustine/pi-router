@@ -30,6 +30,31 @@ But, I will not be giving directions for that method.
         - Space is not an issue, 8 GB should be sufficient.
         - Speed is not much of an issue, so I usaully compromise on UHS-I.
 
+## Background
+
+Here are some resources on different Networking/Linux topics.
+You do not have to deeply read all (or even one) of these resources to understand this project.
+I am presenting them as tools to provide basics or fill in some gaps in knowledge.
+I have not fully read all of these resources, but I have either read sections or skimmed over them.
+
+- [TCP/IP networking reference guide](http://www.penguintutor.com/linux/basic-network-reference)
+    - A short reference guide on IP-level networking.
+    - If you are coming from a place of little-to-no knowledge, I strongly suggest reading this.
+        - Aside from a full read, this guide is also a great reference.
+- [Understand the basics of Linux routing](https://www.techrepublic.com/article/understand-the-basics-of-linux-routing/)
+    - A gentle introduction to routing in Linux.
+- [Linux Advanced Routing & Traffic Control HOWTO](https://tldp.org/HOWTO/Adv-Routing-HOWTO/index.html)
+    - A in-depth guide to routing in Linux.
+- [Guide to IP Layer Network Administration with Linux](http://linux-ip.net/html/index.html)
+    - A thorough guide on Linux IP Networking.
+- [Beej's Guide to Network Programming](https://beej.us/guide/bgnet/)
+    - A well-written guide to network programming.
+    - Since we are not doing any network programming, most of this will not be useful.
+        - However, many of the earlier sections provide great definitions and basic concepts.
+- [Network Configuration Arch Linux Wiki Page](https://wiki.archlinux.org/index.php/Network_configuration)
+    - The Arch Linux wiki is, in my opinion, the best Linux distribution wiki and a great general Linux reference.
+    - If you are using a different distribution for this project or want to use some different tools than the ones I used in this guide, the Arch Linux wiki may provide useful.
+
 ## Raspbian
 
 For the router, I use Raspbian Buster Lite (2020-02-13) since the Pi-hole installer is made to work with Raspbian.
@@ -46,6 +71,7 @@ Here are some things to make sure to do:
     - Enable ssh.
     - Set localisation.
     - Expand the filesystem.
+    - Set hostname.
 - Update package index.
     - `sudo apt-get update`
 - Install base packages and whatever else you want.
@@ -90,6 +116,9 @@ The exact configurations are in the `interfaces` directory, but here are the hig
     - This interface will be part of a bridge, so should not use DHCP or get a static IP.
 - We will create a bridge, `lan`, that will bridge all the LAN connection.
     - We will need to assign a static IP (`192.168.10.1`) to the bridge, since it will be used as the gateway.
+
+See Also:
+- https://unix.stackexchange.com/questions/128439/good-detailed-explanation-of-etc-network-interfaces-syntax
 
 ### Creating the Bridge
 
