@@ -58,7 +58,11 @@ I have not fully read all of these resources, but I have either read sections or
 ## Raspbian
 
 For the router, I use Raspbian Buster Lite (2020-02-13) since the Pi-hole installer is made to work with Raspbian.
-How you download and install it is up to you.
+As of the time of writing, the 64-bit builds for Raspbian (Raspberry PI OS) is not really publicised.
+You can find all the published images [here](https://downloads.raspberrypi.org/),
+I recommend the [64-bit lite build](https://downloads.raspberrypi.org/raspios_lite_arm64/).
+
+How you download and install whatever distribution you want is up to you.
 
 I will leave setting up the system up to your personal preference.
 In this guide I will be following some more idiomatic Raspbian patterns.
