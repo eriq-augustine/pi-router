@@ -398,6 +398,7 @@ See Also:
 - https://wiki.archlinux.org/index.php/Software_access_point#Wi-Fi_link_layer
 - https://wireless.wiki.kernel.org/en/users/documentation/hostapd
 - https://gist.github.com/renaudcerrato/db053d96991aba152cc17d71e7e0f63c
+- https://wiki.gentoo.org/wiki/Hostapd
 
 ## Managing Ports
 
