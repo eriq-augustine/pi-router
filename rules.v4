@@ -40,5 +40,7 @@ COMMIT
 # Port forwards.
 # 22 (ssh)
 # -A PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to 192.168.10.172:22
+# 22222 (external) to 22 (internal)
+# -A PREROUTING -i eth0 -p tcp --dport 22222 -j DNAT --to 192.168.10.172:22
 
 COMMIT
