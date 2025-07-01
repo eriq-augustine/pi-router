@@ -170,7 +170,7 @@ See Also:
 - https://wiki.archlinux.org/index.php/Iptables
 - https://www.youtube.com/watch?v=vbhr4csDeI4
 - https://www.crybit.com/what-is-iptables-in-linux/
-- https://www.youtube.com/watch?v=ldB8kDEtTZA
+- https://www.youtube.com/watch?v=b-a-YpPu34w
 
 ### Rules
 
